@@ -1,0 +1,61 @@
+<mat-card class="pokemon-card">
+    <mat-card-header class="card-header">
+      <button mat-fab extended>
+        <mat-icon>list</mat-icon>{{ data.game_indices[1]?.game_index || 'N/A' }}
+      </button>
+      <h2 class="pokemon-name">{{ data.name }}</h2>
+      <button mat-fab extended>
+        <mat-icon>height</mat-icon>{{ data.weight }} kg
+      </button>
+    </mat-card-header>
+  
+    <img
+      mat-card-image
+      [src]="data.sprites.front_default"
+      [alt]="data.name"
+      class="pokemon-image"
+    />
+  
+    <mat-card-content class="content-container">
+      <section>
+        <h3>Habilidades</h3>
+        <mat-chip-set>
+          <mat-chip *ngFor="let ability of data.abilities">
+            {{ ability.ability.name }}
+          </mat-chip>
+        </mat-chip-set>
+      </section>
+  
+      <section class="mt-3">
+        <h3>Juegos</h3>
+        <ul>
+          <li *ngFor="let game of data.game_indices">
+            {{ game.version.name }}
+          </li>
+        </ul>
+      </section>
+  
+      <section class="mt-3">
+        <h3>Estadísticas Base</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Estadística</th>
+              <th>Valor Base</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let stat of data.stats">
+              <td>{{ stat.stat.name }}</td>
+              <td>{{ stat.base_stat }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </mat-card-content>
+  
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="close()">Cerrar</button>
+    </mat-card-actions>
+  </mat-card>
+  

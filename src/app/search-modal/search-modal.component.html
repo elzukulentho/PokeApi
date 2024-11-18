@@ -1,0 +1,43 @@
+<mat-dialog-content>
+    <div class="dialog-header">
+      <h3>Buscar Pokémon</h3>
+      <button mat-fab mat-dialog-close class="close-button">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    
+    <form [formGroup]="searchForm" class="search-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Buscar</mat-label>
+        <input matInput type="text" formControlName="search" />
+        <mat-error *ngIf="searchForm.get('search')?.hasError('required')">
+          Campo requerido
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button class="search-button" (click)="search()" [disabled]="!searchForm.valid">
+        Buscar
+      </button>
+    </form>
+  
+  <div class="history-container">
+    <h6>Historial de Búsqueda</h6>
+    @if ((history$ | async)?.length) {
+      <ul>
+        @for (term of history$ | async; track term) {
+          <li (click)="searchFromHistory(term)" class="history-item">
+            {{ term }}
+          </li>
+        }
+      </ul>
+    } @else {
+      <ng-template #noHistory>
+        <p>No hay historial de búsqueda.</p>
+      </ng-template>
+    }
+    <button mat-button color="warn" (click)="clearHistory()">
+      Limpiar Historial
+    </button>
+  </div>
+  
+  </mat-dialog-content>
+  

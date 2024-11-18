@@ -1,0 +1,60 @@
+
+.dialog-header {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  margin-bottom: 5px; 
+}
+
+
+.close-button {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+}
+ 
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 16px; 
+  margin-bottom: 24px;
+}
+
+.full-width {
+  flex: 1; 
+}
+
+.search-button {
+  min-width: 120px; 
+}
+
+
+.history-container {
+  margin-top: 24px;
+}
+
+.history-container h4 {
+  margin-bottom: 8px;
+}
+
+
+.history-container ul {
+  padding-left: 16px;
+}
+
+.history-container button {
+  margin-top: 8px;
+}
+
+.history-item {
+  cursor: pointer; 
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.history-item:hover {
+  background-color: #f0f0f0; 
+}
+
